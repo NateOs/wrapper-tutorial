@@ -1,22 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Card.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Card.css";
 
-export default function Card({ children, title }) {
-  return(
+// children can only be used once
+export default function Card({ children, details, title }) {
+  return (
     <div className="card">
       <div className="card-details">
         <h2>{title}</h2>
+        {details}
       </div>
       {children}
     </div>
-  )
+  );
 }
 
 Card.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element.isRequired
+    PropTypes.element.isRequired,
   ]),
+  details: PropTypes.element,
   title: PropTypes.string.isRequired,
-}
+};
+Card.defaultProps = {
+  details: null,
+};

@@ -4,14 +4,14 @@ import Card from "../Card/Card";
 import AnimalDetails from "../AnimalDetails/AnimalDetails";
 
 export default function AnimalCard({ name, size, ...props }) {
+  // Wow!, this prop can even take JSX
+  // whatever you wrap inside of Card
+  // becomes it's child(ren)
   return (
-    <Card title="Animal">
-      {" "}
-      // whatever you wrap inside of Card becomes it's child(ren)
+    <Card title="Animal" details={<AnimalDetails {...props} />}>
       <div>
         <h3>{name}</h3>
         <div>{size}kg</div>
-        <AnimalDetails {...props} />
       </div>
     </Card>
   );
